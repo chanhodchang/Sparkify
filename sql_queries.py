@@ -1,26 +1,31 @@
 # DROP TABLES
 
-songplay_table_drop = ""
-user_table_drop = ""
-song_table_drop = ""
-artist_table_drop = ""
-time_table_drop = ""
+songplay_table_drop = "DROP TABLE IF EXISTS songplay_table"
+user_table_drop = "DROP TABLE IF EXISTS user_table"
+song_table_drop = "DROP TABLE IF EXISTS song_table"
+artist_table_drop = "DROP TABLE IF EXISTS artist_table"
+time_table_drop = "DROP TABLE IF EXISTS time_table"
 
 # CREATE TABLES
 
 songplay_table_create = ("""
+CREATE TABLE IF NOT EXISTS songplay_table()
 """)
 
 user_table_create = ("""
+CREATE TABLE IF NOT EXISTS user_table()
 """)
 
 song_table_create = ("""
+CREATE TABLE IF NOT EXISTS song_table()
 """)
 
 artist_table_create = ("""
+CREATE TABLE IF NOT EXISTS artist_table()
 """)
 
 time_table_create = ("""
+CREATE TABLE IF NOT EXISTS time_table()
 """)
 
 # INSERT RECORDS
