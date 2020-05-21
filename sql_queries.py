@@ -17,7 +17,12 @@ CREATE TABLE IF NOT EXISTS user_table()
 """)
 
 song_table_create = ("""
-CREATE TABLE IF NOT EXISTS song_table()
+CREATE TABLE IF NOT EXISTS song_table
+(song_id text PRIMARY KEY, 
+title text NOT NULL, 
+artist_id text NOT NULL, 
+year int, 
+duration float NOT NULL)
 """)
 
 artist_table_create = ("""
@@ -31,19 +36,27 @@ CREATE TABLE IF NOT EXISTS time_table()
 # INSERT RECORDS
 
 songplay_table_insert = ("""
+-- INSERT INTO songplay_table()
 """)
 
 user_table_insert = ("""
+-- INSERT INTO user_table()
 """)
 
 song_table_insert = ("""
+INSERT INTO song_table 
+(song_id,title,artist_id,year,duration)
+VALUES(%s,%s,%s,%s,%s)
+ON CONFLICT (song_id) DO NOTHING;
 """)
 
 artist_table_insert = ("""
+-- INSERT INTO artist_table()
 """)
 
 
 time_table_insert = ("""
+-- INSERT INTO time_table()
 """)
 
 # FIND SONGS
