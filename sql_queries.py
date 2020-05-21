@@ -26,7 +26,13 @@ duration float NOT NULL)
 """)
 
 artist_table_create = ("""
-CREATE TABLE IF NOT EXISTS artist_table()
+CREATE TABLE IF NOT EXISTS artist_table(
+    artist_id text PRIMARY KEY,
+    artist_name text NOT NULL,
+    artist_location text,
+    artist_latitude float,
+    artist_longitude float
+)
 """)
 
 time_table_create = ("""
@@ -51,7 +57,10 @@ ON CONFLICT (song_id) DO NOTHING;
 """)
 
 artist_table_insert = ("""
--- INSERT INTO artist_table()
+-- INSERT INTO artist_table
+(artist_id, artist_name, artist_location, artist_latitude,artist_longitude)
+VALUES(%s,%s,%s,%s,%s)
+ON CONFLICT (artist_id) DO NOTHING;
 """)
 
 
