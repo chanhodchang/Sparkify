@@ -15,6 +15,8 @@ def process_song_file(cur, song_filepath):
                    'artist_location':'location',
                    'artist_latitude':'latitude',
                    'artist_longitude':'longitude'})
+    
+    num_songs, artist_id, latitude, longitude, location, name, song_id, title, duration, year= song_df.values[0]
 
     # insert song record
     song_data = [song_id,title,artist_id,year,duration]
