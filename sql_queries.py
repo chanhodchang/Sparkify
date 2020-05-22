@@ -9,7 +9,16 @@ time_table_drop = "DROP TABLE IF EXISTS time_table"
 # CREATE TABLES
 
 songplay_table_create = ("""
-CREATE TABLE IF NOT EXISTS songplay_table()
+CREATE TABLE IF NOT EXISTS songplay_table
+(songplay_id int PRIMARY KEY,
+start_time date REFERENCES time_table(start_time),
+user_id int REFERENCES user_table(user_id),
+level varchar,
+song_id int REFERENCES song_table(song_id),
+artist_id int REFERENCES artist_table(artist_id),
+session_id int,
+location varchar,
+user_agent varchar)
 """)
 
 user_table_create = ("""
@@ -54,11 +63,17 @@ weekday varchar NOT NULL)
 # INSERT RECORDS
 
 songplay_table_insert = ("""
--- INSERT INTO songplay_table()
+-- INSERT INTO songplay_table
+(songplay_id,start_time,user_id,level,song_id,artist_id,session_id,location,user_agent)
+VALUES (%s,%s,%s,%s,%s,%s,%s,%s,%s)
+ON CONFLICT (songplay_id) DO NOTHING;
 """)
 
 user_table_insert = ("""
--- INSERT INTO user_table()
+-- INSERT INTO user_table
+(user_id,first_name,last_name,gender,level)
+VALUES(%s,%s,%s,%s,%s)
+ON CONFLICT (user_id) DO NOTHING;
 """)
 
 song_table_insert = ("""
@@ -77,7 +92,10 @@ ON CONFLICT (artist_id) DO NOTHING;
 
 
 time_table_insert = ("""
--- INSERT INTO time_table()
+-- INSERT INTO time_table
+(start_time,hour,day,week,month,year,weekday)
+VALUES(%s,%s,%s,%s,%s,%s,%s)
+ON CONFLICT (start_time) DO NOTHING;
 """)
 
 # FIND SONGS
