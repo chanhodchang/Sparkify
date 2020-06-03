@@ -114,6 +114,7 @@ CREATE TABLE times(
 # STAGING TABLES
 
 staging_events_copy = ("""
+
 """).format()
 
 staging_songs_copy = ("""
